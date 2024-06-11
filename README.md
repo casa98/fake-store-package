@@ -17,7 +17,10 @@ Add `fake_store_api` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fake_store_api: ^1.0.0
+  fake_store_api:
+    git:
+      url: https://github.com/casa98/fake-store-package.git
+      ref: main
 ```
 
 ## Usage
