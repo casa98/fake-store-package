@@ -1,6 +1,6 @@
 name: fake_store_api
 description: Package to connect to some of the Fake Store API endpoints
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/casa98/fake-store-package
 
 environment:
