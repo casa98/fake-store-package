@@ -1,6 +1,6 @@
 # Fake Store API Package
 
-This package provides an easy way  to interact with a portion of the Fake Store API (`https://fakestoreapi.com`). It includes models, services, and repository implementations to fetch data from the API.
+This package provides an easy way  to interact with a portion of the Fake Store API (`https://fakestoreapi.com`). It includes models (`product_model` and `category_model`), services (`product_service`), and repository implementations (`product_repository_impl`) to fetch data from the API.
 
 ## Features
 
@@ -8,9 +8,6 @@ This package provides an easy way  to interact with a portion of the Fake Store 
 - Fetch a specific product by ID
 - Fetch categories
 - Error handling using the `dartz` library
-
-## Important
-Ensure you inject a `ProductRepository` instance at a high level in your widget tree, before trying to access available features.
 
 ## Installation
 Add `fake_store_api` to your `pubspec.yaml`:
@@ -26,9 +23,9 @@ dependencies:
 ## Usage
 Package currently supports 3 endpoints to obtain data from.
 ### Fetching Products
-To fetch a list of products, use the `ProductRepository.getProducts()`
+To fetch a list of products, use the `ProductRepository.getProducts()`, which returns a list of `ProductModel`
 ### Fetching Product by ID
-To fetch a specific product by its ID, use the `ProductRepository.getProductById(productId)`
+To fetch a specific product by its ID, use the `ProductRepository.getProductById(productId)`, which returns a `ProductModel` or the respective error message.
 ### Fetch categories
 To fetch different products categories, use the `ProductRepository.getCategories()`
 

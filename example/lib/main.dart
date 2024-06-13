@@ -3,18 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fake_store_api/fake_store_api.dart';
 
 void main() {
-  /// Get repository instance from package
-  /// You may prefer injecting this dependency with any state manager
-  final productRepository = ProductRepositoryImpl(
-    ProductService(),
-  );
-  runApp(MyApp(productRepository: productRepository));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.productRepository});
-
-  final ProductRepository productRepository;
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProductListScreen(productRepository: productRepository),
+      home: const ProductListScreen(),
     );
   }
 }
 
 class ProductListScreen extends StatelessWidget {
-  const ProductListScreen({super.key, required this.productRepository});
-
-  final ProductRepository productRepository;
+  const ProductListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +31,7 @@ class ProductListScreen extends StatelessWidget {
         title: const Text('Products'),
       ),
       body: FutureBuilder<Either<String, List<ProductModel>>>(
-        future: productRepository.getProducts(),
+        future: FakeStoreApi().getProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -61,7 +52,6 @@ class ProductListScreen extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (_) => ProductDetailScreen(
                         productId: product.id,
-                        productRepository: productRepository,
                       ),
                     ),
                   );
@@ -76,14 +66,9 @@ class ProductListScreen extends StatelessWidget {
 }
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({
-    super.key,
-    required this.productId,
-    required this.productRepository,
-  });
+  const ProductDetailScreen({required this.productId, super.key});
 
   final int productId;
-  final ProductRepository productRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +77,7 @@ class ProductDetailScreen extends StatelessWidget {
         title: const Text('Product Details'),
       ),
       body: FutureBuilder<Either<String, ProductModel>>(
-        future: productRepository.getProductById(productId),
+        future: FakeStoreApi().getProductById(productId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
