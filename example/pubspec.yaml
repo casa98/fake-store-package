@@ -12,10 +12,9 @@ dependencies:
     sdk: flutter
 
   fake_store_api:
-    path: ../
-    # git:
-    #   url: https://github.com/casa98/fake-store-package.git
-    #   ref: main
+    git:
+      url: https://github.com/casa98/fake-store-package.git
+      ref: main
 
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1

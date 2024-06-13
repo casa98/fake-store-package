@@ -68,9 +68,11 @@ packages:
   fake_store_api:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: bb1cd192ab2dff67f10652e2bb83abb9c8da1b7a
+      url: "https://github.com/casa98/fake-store-package.git"
+    source: git
     version: "1.0.1"
   flutter:
     dependency: "direct main"
