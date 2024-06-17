@@ -35,6 +35,10 @@ class ProductListScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.data is Left) {
+            return Center(
+              child: Text((snapshot.data as Left).value),
+            );
           } else if (snapshot.hasError || snapshot.data == null) {
             return const Center(child: Text('Nothing to show'));
           }
@@ -81,6 +85,10 @@ class ProductDetailScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.data is Left) {
+            return Center(
+              child: Text((snapshot.data as Left).value),
+            );
           } else if (snapshot.hasError || snapshot.data == null) {
             return const Center(child: Text('Nothing to show'));
           }
