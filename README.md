@@ -1,16 +1,20 @@
-# Fake Store API Package
+# Paquete Fake Store API
 
-This package provides an easy way  to interact with a portion of the Fake Store API (`https://fakestoreapi.com`). It includes models (`product_model` and `category_model`), services (`product_service`), and repository implementations (`product_repository_impl`) to fetch data from the API.
+Este paquete proporciona una forma fácil de interactuar con una parte de la API *Fake Store* (`https://fakestoreapi.com`).
 
-## Features
+El paquete incluye los siguientes modelos de datos:
+- `ProductModel`: representa un producto y contiene las propiedades `id`, `title`, `price`, `category`, `description` e `image`.
+- `CategoryModel`: representa los diferentes tipos de categorías que tienen los productos, y contiene la propiedad `name`.
 
-- Fetch list of products
-- Fetch a specific product by ID
-- Fetch categories
-- Error handling using the `dartz` library
+## Características
 
-## Installation
-Add `fake_store_api` to your `pubspec.yaml`:
+- Obtener lista de productos
+- Obtener un producto específico por ID
+- Obtener categorías
+- Manejo de errores usando la biblioteca `dartz`
+
+## Instalación
+Agrega `fake_store_api` a tu `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -20,20 +24,29 @@ dependencies:
       ref: main
 ```
 
-## Usage
-Package currently supports 3 endpoints to obtain data from.
-### Fetching Products
-To fetch a list of products, use the `ProductRepository.getProducts()`, which returns a list of `ProductModel`
-### Fetching Product by ID
-To fetch a specific product by its ID, use the `ProductRepository.getProductById(productId)`, which returns a `ProductModel` or the respective error message.
-### Fetch categories
-To fetch different products categories, use the `ProductRepository.getCategories()`
+## Uso
+El paquete actualmente soporta 3 endpoints para obtener datos.
+Para acceder a los endpoints, primero crea una instancia de la clase `FakeStoreApi`.
 
-## Example
-An example Flutter app demonstrating how to use this package can be found in the `example` directory. To run the example app:
+## Métodos
+### Obtener Productos
+Para obtener una lista de productos, llamar el método `getProducts()` de la clase `FakeStoreApi`, el cual devuelve una lista de `ProductModel`.
+
+### Obtener Producto por ID
+Para obtener un producto específico por su ID, llamar el método `getProductById(productId)` de la clase `FakeStoreApi`, el cual devuelve un `ProductModel`.
+
+### Obtener categorías
+Para obtener diferentes categorías de productos, llamr el método `getCategories()` de la clase `FakeStoreApi`.
+
+### Errores
+En caso de presentarse algún error en la solicitud, los detalles de esta serán mostrados en el centro de la pantalla del dispositivo.
+
+## Ejemplo
+Un ejemplo de una aplicación Flutter que demuestra cómo usar este paquete se puede encontrar en el directorio `example`. Para ejecutar la aplicación de ejemplo siga estos pasos:
+
 1. `cd example`
 2. `flutter run`
 
-## Version Information
-- Flutter 3.19.6 (Channel stable)
-- Dart 3.3.4 (stable)
+## Información adicional
+- Flutter 3.19.6 (Canal estable)
+- Dart 3.3.4 (estable)
